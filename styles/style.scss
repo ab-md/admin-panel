@@ -1,0 +1,418 @@
+@import "variables";
+@import "mixins";
+
+@font-face {
+    font-family: 'shabnam';
+    src: url('../fonts/Shabnam.eot') format('eot');
+    src: url('../fonts/Shabnam.ttf') format('truetype'),
+        url('../fonts/Shabnam.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+    font-family: "shabnam";
+}
+
+body {
+    font-family: "shabnam";
+    overflow-x: hidden;
+    background-color: $bg-color;
+}
+
+.sidebar {
+    padding: 1rem 1.2rem;
+    width: 350px;
+    height: 100%;
+    transition: all .5s ease;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+
+    &.disable {
+        transform: translateX(100%);
+    }
+}
+
+.side-toggle {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: rgba(62, 153, 228, 0.2);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.sidebar-container {
+    @include box-shadow;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: $white-color;
+}
+
+.brand {
+    margin-bottom: 10px;
+}
+
+.admin-info {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $main-accent;
+    border-radius: 10px;
+    padding: .5rem;
+    // box-shadow: $shadow;
+
+    .admin-details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            padding-left: 10px;
+        }
+    }
+
+    img {
+        width: 70px;
+    }
+}
+
+.dash-items {
+    margin-top: 30px;
+}
+
+.dash-item {
+
+    padding: 1rem 0;
+
+    i,
+    span {
+        color: $text-color;
+    }
+
+    &.active {
+        background: $main-accent;
+        padding-right: 10px;
+        border-radius: 10px;
+        transition: all .5s ease;
+    }
+}
+
+.advertisement {
+    text-align: center;
+    line-height: 2rem;
+    background-color: $main-accent;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 20px;
+
+    i {
+        font-size: 4rem;
+        color: $primary-color;
+    }
+
+    p:not(.advertise-title) {
+        color: $text-color;
+    }
+
+    .advertise-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    button {
+        background-color: $primary-color;
+        color: $white-color;
+        width: 100%;
+        padding: .5rem .7rem;
+        border-radius: 10px;
+        border: none;
+    }
+}
+
+.main-content {
+    margin-right: 350px;
+    padding: 2rem;
+    transition: all .4s ease;
+
+    &.disable {
+        margin-right: 0;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+
+    .content-title {
+        margin-right: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-around;
+    cursor: pointer;
+    z-index: 5;
+
+    &.disable {
+        span {
+
+            &:first-child {
+                transform: rotate(0);
+            }
+
+            &:last-child {
+                transform: rotate(0);
+            }
+
+            &:nth-child(2) {
+                display: inline-block;
+            }
+        }
+    }
+
+    span {
+        width: 22px;
+        height: 3px;
+        background-color: $dark-color;
+        display: inline-block;
+        margin: 1px 0;
+        border-radius: 10px;
+        transition: .4s ease;
+
+        &:nth-child(2) {
+            display: none;
+        }
+
+        &:first-child {
+            transform: rotate(30deg);
+        }
+
+        &:last-child {
+            transform: rotate(-30deg);
+        }
+    }
+}
+
+.cta-btn {
+    background-color: $primary-color;
+    padding: .6rem 2rem;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    color: $white-color;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: "shabnam";
+    cursor: pointer;
+
+    i {
+        margin-left: 10px;
+    }
+}
+
+main {
+    margin-top: 100px;
+}
+
+.statistics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .statistics-title {
+        font-size: 2rem;
+        color: rgb(59, 59, 59);
+    }
+}
+
+.statistics-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+
+    .statistics-card {
+        // background: $white-color;
+        @include box-shadow;
+        padding: 2rem;
+        width: 23%;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    i {
+        border-radius: 50px;
+        background-color: $main-accent;
+        padding: 10px;
+        margin-left: 20px;
+    }
+
+    .heading {
+        font-size: 1rem;
+        font-weight: bold;
+        color: $text-color;
+    }
+
+    .info {
+        font-size: 2rem;
+        color: $text-color;
+        margin-top: 10px;
+    }
+}
+
+.overview {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    flex-wrap: wrap;
+}
+
+.profile-overview {
+    width: 24%;
+}
+
+.overview-title {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.profile-card {
+    box-shadow: 0 0 10px rgba(17, 17, 26, .1);
+    text-align: center;
+    padding: 50px 0;
+    height: 100%;
+
+    img {
+        width: 170px;
+        padding-bottom: 20px;
+    }
+
+    .profile-info {
+        margin: 10px 0 40px 0;
+    }
+
+    .profile-name {
+        font-size: 1.2rem;
+    }
+
+    .profile-followers {
+        font-size: 13px;
+    }
+
+    .profile-income {
+        background-color: $main-accent;
+        border-radius: 10px;
+        padding: 10px 20px;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .income-title,
+    .income-amount {
+        font-size: 13px;
+        color: $text-color;
+    }
+
+    .income-amount {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+}
+
+.recent-overview {
+    width: 74%;
+}
+
+.table {
+    width: 100%;
+    height: 100%;
+
+    table {
+        // @include box-shadow;
+        box-shadow: 0 0 10px rgba(17, 17, 26, .1);
+        // background-color: $white-color;
+        width: 100%;
+        height: 100%;
+        text-align: right;
+        padding: 10px;
+    }
+}
+
+@include media(xl) {
+
+    .statistics-cards {
+        .statistics-card {
+            width: 48%;
+            margin-top: 20px;
+        }
+    }
+
+    .profile-overview,
+    .recent-overview {
+        width: 100%;
+    }
+
+    .recent-overview {
+        margin-top: 100px;
+    }
+
+}
+
+@include media(lg) {
+
+    .main-content {
+        margin-right: 0;
+    }
+
+    .sidebar {
+        transform: translateX(100%);
+        transition: all .5s ease;
+
+        &.disable {
+            transform: translateX(0);
+        }
+    }
+
+    .side-toggle {
+            visibility: visible;
+            // opacity: 1;
+    }
+
+}
+
+@include media(sm) {
+
+    .content-title-detail {
+        display: none;
+    }
+
+    .statistics-cards {
+        .statistics-card {
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+
+}
